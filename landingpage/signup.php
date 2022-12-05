@@ -61,7 +61,7 @@ if (isset($_POST['submit'])) {
 <div class="col-12">
 
 <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
-<h2 class="text-white" style="color:white">Login</h2>
+<h2 class="text-white" style="color:white">Sign Up</h2>
 </div>
 </div>
 </div>
