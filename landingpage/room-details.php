@@ -131,17 +131,16 @@ where tblroom.id=:rmid";
 <div class="reviwer-content">
 <div class="reviwer-title-rating d-flex align-items-center justify-content-between">
 <div class="reviwer-title">
-<h6 class="total_five_star_review">0</h6>
+<h6 id="total_five_star_review" style="padding-right: 10px;">0</h6>
 </div>
-<div class="reviwer-rating">
-<i class="fa fa-star"></i>
-<i class="fa fa-star"></i>
-<i class="fa fa-star"></i>
-<i class="fa fa-star"></i>
-<i class="fa fa-star"></i>
+<div>
+<i class="fa fa-star total_five_star_review_star"></i>
+<i class="fa fa-star total_five_star_review_star"></i>
+<i class="fa fa-star total_five_star_review_star"></i>
+<i class="fa fa-star total_five_star_review_star"></i>
+<i class="fa fa-star total_five_star_review_star"></i>
 </div>
 </div>
-<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora.</p>
 </div>
 </div>
 
@@ -152,20 +151,59 @@ where tblroom.id=:rmid";
 <div class="reviwer-content">
 <div class="reviwer-title-rating d-flex align-items-center justify-content-between">
 <div class="reviwer-title">
-<span>27 Aug 2019</span>
-<h6>Sounron Masha</h6>
+<h6 id="total_four_star_review" style="padding-right: 10px;">0</h6>
 </div>
-<div class="reviwer-rating">
-<i class="fa fa-star"></i>
-<i class="fa fa-star"></i>
-<i class="fa fa-star"></i>
-<i class="fa fa-star"></i>
-<i class="fa fa-star"></i>
-</div>
-</div>
-<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora.</p>
+<div>
+<i class="fa fa-star total_four_star_review_star"></i>
+<i class="fa fa-star total_four_star_review_star"></i>
+<i class="fa fa-star total_four_star_review_star"></i>
+<i class="fa fa-star total_four_star_review_star"></i>
+<i class="fa fa-star total_four_star_review_star"></i>
 </div>
 </div>
+</div>
+</div>
+
+<div class="single-room-review-area d-flex align-items-center">
+<div class="reviwer-thumbnail">
+<img data-cfsrc="img/bg-img/54.jpg" alt="" style="display:none;visibility:hidden;"><noscript><img src="img/bg-img/54.jpg" alt=""></noscript>
+</div>
+<div class="reviwer-content">
+<div class="reviwer-title-rating d-flex align-items-center justify-content-between">
+<div class="reviwer-title">
+<h6 id="total_three_star_review" style="padding-right: 10px;">0</h6>
+</div>
+<div >
+<i class="fa fa-star total_three_star_review_star"></i>
+<i class="fa fa-star total_three_star_review_star"></i>
+<i class="fa fa-star total_three_star_review_star"></i>
+<i class="fa fa-star total_three_star_review_star"></i>
+<i class="fa fa-star total_three_star_review_star"></i>
+</div>
+</div>
+</div>
+</div>
+
+<div class="single-room-review-area d-flex align-items-center">
+<div class="reviwer-thumbnail">
+<img data-cfsrc="img/bg-img/54.jpg" alt="" style="display:none;visibility:hidden;"><noscript><img src="img/bg-img/54.jpg" alt=""></noscript>
+</div>
+<div class="reviwer-content">
+<div class="reviwer-title-rating d-flex align-items-center justify-content-between">
+<div class="reviwer-title">
+<h6 id="total_two_star_review" style="padding-right: 10px;">0</h6>
+</div>
+<div>
+<i class="fa fa-star total_two_star_review_star"></i>
+<i class="fa fa-star total_two_star_review_star"></i>
+<i class="fa fa-star total_two_star_review_star"></i>
+<i class="fa fa-star total_two_star_review_star"></i>
+<i class="fa fa-star total_two_star_review_star"></i>
+</div>
+</div>
+</div>
+</div>
+
 
 <div class="single-room-review-area d-flex align-items-center">
 <div class="reviwer-thumbnail">
@@ -174,18 +212,16 @@ where tblroom.id=:rmid";
 <div class="reviwer-content">
 <div class="reviwer-title-rating d-flex align-items-center justify-content-between">
 <div class="reviwer-title">
-<span>27 Aug 2019</span>
-<h6>Amada Lyly</h6>
+<h6 id="total_one_star_review" style="padding-right: 10px;">0</h6>
 </div>
-<div class="reviwer-rating">
-<i class="fa fa-star"></i>
-<i class="fa fa-star"></i>
-<i class="fa fa-star"></i>
-<i class="fa fa-star"></i>
-<i class="fa fa-star"></i>
+<div>
+<i class="fa fa-star total_one_star_review_star"></i>
+<i class="fa fa-star total_one_star_review_star"></i>
+<i class="fa fa-star total_one_star_review_star"></i>
+<i class="fa fa-star total_one_star_review_star"></i>
+<i class="fa fa-star total_one_star_review_star"></i>
 </div>
 </div>
-<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora.</p>
 </div>
 </div>
 </div>
@@ -355,7 +391,11 @@ where tblroom.id=:rmid";
 
 <script>
 		var rating_data = 0;
-
+    var count_star_five=0;
+    var count_star_four=0;
+    var count_star_three=0;
+    var count_star_two=0;
+    var count_star_one=0;
 		$('#add_review').click(function() {
 
 			$('#review_modal').modal('show');
@@ -463,6 +503,41 @@ where tblroom.id=:rmid";
 						}
 					});
 
+					$('.total_five_star_review_star').each(function() {
+						count_star_five++;
+						if (Math.ceil(data.five_star_review) >= count_star_five) {
+
+							$(this).addClass('checked');
+						}
+					});
+
+					$('.total_four_star_review_star').each(function() {
+						count_star_four++;
+						if (Math.ceil(data.four_star_review) >= count_star_four) {
+							$(this).addClass('checked');
+						}
+					});
+
+					$('.total_three_star_review_star').each(function() {
+						count_star_three++;
+						if (Math.ceil(data.three_star_review) >= count_star_three) {
+							$(this).addClass('checked');
+						}
+					});
+
+					$('.total_two_star_review_star').each(function() {
+						count_star_two++;
+						if (Math.ceil(data.two_star_review) >= count_star_two) {
+							$(this).addClass('checked');
+						}
+					});
+
+					$('.total_one_star_review_star').each(function() {
+						count_star_one++;
+						if (Math.ceil(data.one_star_review) >= count_star_one) {
+							$(this).addClass('checked');
+						}
+					});
 
 					$('#total_five_star_review').text(data.five_star_review);
 
@@ -474,15 +549,15 @@ where tblroom.id=:rmid";
 
 					$('#total_one_star_review').text(data.one_star_review);
 
-					$('#five_star_progress').css('width', (data.five_star_review / data.total_review) * 100 + '%');
+					// $('#five_star_progress').css('width', (data.five_star_review / data.total_review) * 100 + '%');
 
-					$('#four_star_progress').css('width', (data.four_star_review / data.total_review) * 100 + '%');
+					// $('#four_star_progress').css('width', (data.four_star_review / data.total_review) * 100 + '%');
 
-					$('#three_star_progress').css('width', (data.three_star_review / data.total_review) * 100 + '%');
+					// $('#three_star_progress').css('width', (data.three_star_review / data.total_review) * 100 + '%');
 
-					$('#two_star_progress').css('width', (data.two_star_review / data.total_review) * 100 + '%');
+					// $('#two_star_progress').css('width', (data.two_star_review / data.total_review) * 100 + '%');
 
-					$('#one_star_progress').css('width', (data.one_star_review / data.total_review) * 100 + '%');
+					// $('#one_star_progress').css('width', (data.one_star_review / data.total_review) * 100 + '%');
 
 				}
 			})

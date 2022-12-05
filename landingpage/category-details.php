@@ -39,10 +39,10 @@ where tblroom.hotel_type=:hotel_id";
 	$cnt = 1;
 	if ($query->rowCount() > 0) {
 		foreach ($results as $row) {               ?>
-			<div class="single-room-area d-flex align-items-center mb-50 wow fadeInUp" style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;" data-wow-delay="100ms">
+			<div class="single-room-area d-flex align-items-center mb-50 wow fadeInUp" style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; " data-wow-delay="100ms">
 
 			<div class="room-thumbnail">
-				<img src="../admin/images/<?php echo $row->Image; ?>" alt="">
+				<img src="../admin/images/<?php echo $row->Image; ?>" alt="" style="height: 300px;width: 400px;">
 				</div>
 			<div class="room-content">
 				<h2><?php echo htmlentities($row->RoomName); ?></h2>
