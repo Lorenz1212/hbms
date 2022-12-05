@@ -19,7 +19,7 @@ foreach ($results as $result) {
 $_SESSION['hbmsuid']=$result->ID;
 }
 $_SESSION['login']=$_POST['email'];
-echo "<script type='text/javascript'> document.location ='index.php'; </script>";
+echo "<script type='text/javascript'> document.location ='landingpage/index.php'; </script>";
 } else{
 echo "<script>alert('Invalid Details');</script>";
 }
@@ -81,7 +81,7 @@ foreach ($results as $result) {
 $_SESSION['hbmsuid']=$result->ID;
 }
 $_SESSION['login']=$_POST['email'];
-echo "<script type='text/javascript'> document.location ='index.php'; </script>";
+echo "<script type='text/javascript'> document.location ='landingpage/index.php'; </script>";
 } else{
 echo "<script>alert('Invalid Details');</script>";
 }

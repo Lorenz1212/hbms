@@ -31,36 +31,36 @@
 					$sql = "SELECT tblroom.*,tblroom.id as rmid , tblcategory.Price,tblcategory.ID,tblcategory.CategoryName from tblroom 
 join tblcategory on tblroom.RoomType=tblcategory.ID 
 where tblroom.hotel_type=:hotel_id";
-					$query = $dbh->prepare($sql);
-					$query->bindParam(':hotel_id', $hotel_id, PDO::PARAM_STR);
-					$query->execute();
-					$results = $query->fetchAll(PDO::FETCH_OBJ);
+	$query = $dbh->prepare($sql);
+	$query->bindParam(':hotel_id', $hotel_id, PDO::PARAM_STR);
+	$query->execute();
+	$results = $query->fetchAll(PDO::FETCH_OBJ);
 
-					$cnt = 1;
-					if ($query->rowCount() > 0) {
-						foreach ($results as $row) {               ?>
-							<div class="single-room-area d-flex align-items-center mb-50 wow fadeInUp" style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;" data-wow-delay="100ms">
+	$cnt = 1;
+	if ($query->rowCount() > 0) {
+		foreach ($results as $row) {               ?>
+			<div class="single-room-area d-flex align-items-center mb-50 wow fadeInUp" style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;" data-wow-delay="100ms">
 
-							<div class="room-thumbnail">
-								<img src="../admin/images/<?php echo $row->Image; ?>" alt="">
-								</div>
-							<div class="room-content">
-								<h2><?php echo htmlentities($row->RoomName); ?></h2>
-								<h4>₱ <?php echo htmlentities($row->Price); ?> </h4>
-								<div class="room-feature">
-								<!-- <h6>Room: <span> </span></h6> -->
-								<h6>Category Name: <span><?php echo htmlentities($row->CategoryName); ?></span></h6>
-								<h6>Room Facilities: <span><?php echo htmlentities($row->RoomFacility); ?></span></h6>
-								<!-- <h6>Services: <span>Wifi, television ...</span></h6> -->
-								</div>
-								<!-- <button class="btn btn-success"><a href="book-room.php?rmid=<?php echo $row->rmid; ?>">Book</a></button> -->
-								<a href="room-details.php?rmid=<?php echo $row->rmid; ?>" class="btn view-detail-btn">View Details <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-								</div>
-								</div>
+			<div class="room-thumbnail">
+				<img src="../admin/images/<?php echo $row->Image; ?>" alt="">
+				</div>
+			<div class="room-content">
+				<h2><?php echo htmlentities($row->RoomName); ?></h2>
+				<h4>₱ <?php echo htmlentities($row->Price); ?> </h4>
+				<div class="room-feature">
+				<!-- <h6>Room: <span> </span></h6> -->
+				<h6>Category Name: <span><?php echo htmlentities($row->CategoryName); ?></span></h6>
+				<h6>Room Facilities: <span><?php echo htmlentities($row->RoomFacility); ?></span></h6>
+				<!-- <h6>Services: <span>Wifi, television ...</span></h6> -->
+				</div>
+				<!-- <button class="btn btn-success"><a href="book-room.php?rmid=<?php echo $row->rmid; ?>">Book</a></button> -->
+				<a href="room-details.php?rmid=<?php echo $row->rmid; ?>" class="btn view-detail-btn">View Details <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+				</div>
+				</div>
 
-								<?php $cnt = $cnt + 1;
-								}
-							} ?>
+				<?php $cnt = $cnt + 1;
+				}
+			} ?>
 
 </div>
 

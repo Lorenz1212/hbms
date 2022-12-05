@@ -251,7 +251,26 @@ where tblroom.id=:rmid";
 <h6>Max Child: <span><?php echo htmlentities($row->MaxChild); ?></span></h6>
 <h6>No of Beds: <span><?php echo htmlentities($row->NoofBed); ?></span></h6>
 </div>
-<a href="book-room.php?rmid=<?php echo $row->rmid; ?>"  class="btn roberto-btn w-100">Book Now</a>
+<a href="../book-room.php?rmid=<?php echo $row->rmid; ?>"  class="btn roberto-btn w-100">Book Now</a>
+<hr>
+	<h4 class="text-center">Rate the room:</h4>
+		<h4 class="text-center mt-2 mb-4">
+			<i class="fa fa-star  submit_star mr-1" id="submit_star_1" data-rating="1"></i>
+			<i class="fa fa-star  submit_star mr-1" id="submit_star_2" data-rating="2"></i>
+			<i class="fa fa-star  submit_star mr-1" id="submit_star_3" data-rating="3"></i>
+			<i class="fa fa-star  submit_star mr-1" id="submit_star_4" data-rating="4"></i>
+			<i class="fa fa-star  submit_star mr-1" id="submit_star_5" data-rating="5"></i>
+		</h4>
+		<div class="form-group">
+			<input type="text" name="user_name" id="user_name" class="form-control" placeholder="Enter Your Name" />
+		</div>
+
+		<input type="hidden" name="room_id" id="room_id" class="form-control" value="<?php $parameter = $_GET['rmid'];
+																						echo $parameter; ?>" />
+
+		<div class="form-group text-center mt-4">
+			<button type="button" class="btn roberto-btn w-100" id="save_review">Submit</button>
+		</div>
 </div>
 </form>
 </div>
@@ -312,11 +331,11 @@ where tblroom.id=:rmid";
 				<div class="modal-body">
 					<h4 class="text-center">Rate the room:</h4>
 					<h4 class="text-center mt-2 mb-4">
-						<i class="fas fa-star star-light submit_star mr-1" id="submit_star_1" data-rating="1"></i>
-						<i class="fas fa-star star-light submit_star mr-1" id="submit_star_2" data-rating="2"></i>
-						<i class="fas fa-star star-light submit_star mr-1" id="submit_star_3" data-rating="3"></i>
-						<i class="fas fa-star star-light submit_star mr-1" id="submit_star_4" data-rating="4"></i>
-						<i class="fas fa-star star-light submit_star mr-1" id="submit_star_5" data-rating="5"></i>
+						<i class="fa fa-star  submit_star mr-1" id="submit_star_1" data-rating="1"></i>
+						<i class="fa fa-star  submit_star mr-1" id="submit_star_2" data-rating="2"></i>
+						<i class="fa fa-star  submit_star mr-1" id="submit_star_3" data-rating="3"></i>
+						<i class="fa fa-star  submit_star mr-1" id="submit_star_4" data-rating="4"></i>
+						<i class="fa fa-star  submit_star mr-1" id="submit_star_5" data-rating="5"></i>
 					</h4>
 					<div class="form-group">
 						<input type="text" name="user_name" id="user_name" class="form-control" placeholder="Enter Your Name" />
@@ -351,7 +370,7 @@ where tblroom.id=:rmid";
 
 			for (var count = 1; count <= rating; count++) {
 
-				$('#submit_star_' + count).addClass('text-warning');
+				$('#submit_star_' + count).addClass('checked');
 
 			}
 
@@ -360,9 +379,9 @@ where tblroom.id=:rmid";
 		function reset_background() {
 			for (var count = 1; count <= 5; count++) {
 
-				$('#submit_star_' + count).addClass('star-light');
+				$('#submit_star_' + count).addClass('checked');
 
-				$('#submit_star_' + count).removeClass('text-warning');
+				$('#submit_star_' + count).removeClass('checked');
 
 			}
 		}
@@ -373,9 +392,9 @@ where tblroom.id=:rmid";
 
 			for (var count = 1; count <= rating_data; count++) {
 
-				$('#submit_star_' + count).removeClass('star-light');
+				$('#submit_star_' + count).removeClass('checked');
 
-				$('#submit_star_' + count).addClass('text-warning');
+				$('#submit_star_' + count).addClass('checked');
 			}
 
 		});
@@ -398,7 +417,7 @@ where tblroom.id=:rmid";
 				return false;
 			} else {
 				$.ajax({
-					url: "submit_rating.php",
+					url: "../submit_rating.php",
 					method: "POST",
 					data: {
 						rating_data: rating_data,
@@ -433,7 +452,8 @@ where tblroom.id=:rmid";
 				success: function(data) {
 					$('#average_rating').text(data.average_rating);
 					$('#total_review').text(data.total_review);
-
+					$('input[name=user_name]').val("");
+					$('.submit_star').removeClass('checked');
 					var count_star = 0;
 
 					$('.main_star').each(function() {
