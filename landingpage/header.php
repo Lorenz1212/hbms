@@ -48,12 +48,12 @@ include('../includes/dbconnection.php');
 <div class="col-6">
 <div class="top-header-content">
 
-<div class="top-social-area ml-auto">
+<!-- <div class="top-social-area ml-auto">
 <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
 <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
 <a href="#"><i class="fa fa-tripadvisor" aria-hidden="true"></i></a>
 <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-</div>
+</div> -->
 </div>
 </div>
 </div>
@@ -69,6 +69,7 @@ include('../includes/dbconnection.php');
 
 <a class="nav-brand" href="index.php">
 <img src="../images/logoo.png" img="" align="left-content" width="60" height="60">
+Hotel Reservation
 </a>
 
 <div class="classy-navbar-toggler">
@@ -84,7 +85,7 @@ include('../includes/dbconnection.php');
 <div class="classynav">
 <ul id="nav">
 <!-- <li class="active"><a href="index-2.html">Home</a></li> -->
-<li class="active"><a href="../index.php">Facilities</a></li>
+<li class="active"><a href="index.php">Facilities</a></li>
 <li><a href="#">Campus</a>
 <ul class="dropdown">
 	 <?php

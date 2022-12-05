@@ -155,7 +155,7 @@
 </section> -->
 
 
-<div class="roberto-service-area">
+<!-- <div class="roberto-service-area">
 <div class="container">
 <div class="row">
 <div class="col-12">
@@ -190,9 +190,9 @@
 </div>
 </div>
 </div>
+ -->
 
-
-<section class="roberto-rooms-area">
+<!-- <section class="roberto-rooms-area">
 <div class="rooms-slides owl-carousel">
 
 <div class="single-room-slide d-flex align-items-center">
@@ -229,10 +229,10 @@
 </div>
 </div>
 </div>
-</section>
+</section> -->
 
 
-<section class="roberto-testimonials-area section-padding-100-0">
+<!-- <section class="roberto-testimonials-area section-padding-100-0">
 <div class="container">
 <div class="row align-items-center">
 <div class="col-12 col-md-6">
@@ -310,111 +310,51 @@
 </div>
 </div>
 </section>
-
+ -->
 
 <section class="roberto-project-area">
 
 <div class="projects-slides owl-carousel">
 
 <div class="single-project-slide active bg-img" style="background-image: url(img/bg-img/5.jpg);">
+  <?php
+    $sql = "SELECT * from tblfacility";
+    $query = $dbh->prepare($sql);
+    $query->execute();
+    $results = $query->fetchAll(PDO::FETCH_OBJ);
 
-<div class="project-content">
+    $cnt = 1;
+    if ($query->rowCount() > 0) {
+      foreach ($results as $row) {               ?>
+        <div class="project-content">
 <div class="text">
-<h6>Entertaiment</h6>
-<h5>Racing Bike</h5>
+<h5><?php echo htmlentities($row->FacilityTitle); ?></h5>
 </div>
 </div>
 
 <div class="hover-effects">
 <div class="text">
-<h6>Entertaiment</h6>
-<h5>Racing Bike</h5>
-<p>I focus a lot on helping the first time or inexperienced traveler head out prepared and confident...</p>
+
+<h5><?php echo htmlentities($row->FacilityTitle); ?> </h5>
+<p><?php echo htmlentities($row->Description); ?></p>
 </div>
-<a href="#" class="btn project-btn">Discover Now <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+<!-- <a href="#" class="btn project-btn">Discover Now <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a> -->
 </div>
 </div>
 
-<div class="single-project-slide bg-img" style="background-image: url(img/bg-img/6.jpg);">
+<div class="single-project-slide bg-img" style="background-image: url(../admin/images/<?php echo $row->Image; ?>);">
+<?php $cnt = $cnt + 1;
+            }
+} ?>
 
-<div class="project-content">
-<div class="text">
-<h6>Entertaiment</h6>
-<h5>Racing Bike</h5>
-</div>
-</div>
 
-<div class="hover-effects">
-<div class="text">
-<h6>Entertaiment</h6>
-<h5>Racing Bike</h5>
-<p>I focus a lot on helping the first time or inexperienced traveler head out prepared and confident...</p>
-</div>
-<a href="#" class="btn project-btn">Discover Now <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-</div>
-</div>
 
-<div class="single-project-slide bg-img" style="background-image: url(img/bg-img/7.jpg);">
-
-<div class="project-content">
-<div class="text">
-<h6>Entertaiment</h6>
-<h5>Racing Bike</h5>
-</div>
-</div>
-
-<div class="hover-effects">
-<div class="text">
-<h6>Entertaiment</h6>
-<h5>Racing Bike</h5>
-<p>I focus a lot on helping the first time or inexperienced traveler head out prepared and confident...</p>
-</div>
-<a href="#" class="btn project-btn">Discover Now <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-</div>
-</div>
-
-<div class="single-project-slide bg-img" style="background-image: url(img/bg-img/8.jpg);">
-
-<div class="project-content">
-<div class="text">
-<h6>Entertaiment</h6>
-<h5>Racing Bike</h5>
-</div>
-</div>
-
-<div class="hover-effects">
-<div class="text">
-<h6>Entertaiment</h6>
-<h5>Racing Bike</h5>
-<p>I focus a lot on helping the first time or inexperienced traveler head out prepared and confident...</p>
-</div>
-<a href="#" class="btn project-btn">Discover Now <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-</div>
-</div>
-
-<div class="single-project-slide bg-img" style="background-image: url(img/bg-img/9.jpg);">
-
-<div class="project-content">
-<div class="text">
-<h6>Entertaiment</h6>
-<h5>Racing Bike</h5>
-</div>
-</div>
-
-<div class="hover-effects">
-<div class="text">
-<h6>Entertaiment</h6>
-<h5>Racing Bike</h5>
-<p>I focus a lot on helping the first time or inexperienced traveler head out prepared and confident...</p>
-</div>
-<a href="#" class="btn project-btn">Discover Now <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-</div>
 </div>
 </div>
 </section>
 
 
-<section class="roberto-blog-area section-padding-100-0">
+<!-- <section class="roberto-blog-area section-padding-100-0">
 <div class="container">
 <div class="row">
 
@@ -493,7 +433,7 @@
 </div>
 </div>
 </section>
-
+ -->
 
 <div class="partner-area">
 <div class="container">
