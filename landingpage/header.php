@@ -100,7 +100,7 @@ include('../includes/dbconnection.php');
 
 
 <li><a href="../gallery.php">Gallery</a></li>
-<li><a href="../contact.php">Contact</a></li>
+<li><a href="contact.php">Contact</a></li>
 <li><a href="../signup.php">Sign Up</a></li>
 <li><a href="../signin.php">Login</a></li>
 </ul>
