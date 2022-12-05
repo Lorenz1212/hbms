@@ -101,8 +101,23 @@ include('../includes/dbconnection.php');
 
 <li><a href="../gallery.php">Gallery</a></li>
 <li><a href="contact.php">Contact</a></li>
-<li><a href="../signup.php">Sign Up</a></li>
-<li><a href="../signin.php">Login</a></li>
+<?php 
+if($_SESSION['login'] == false){
+  echo '<li><a href="signup.php">Sign Up</a></li>
+<li><a href="signin.php">Login</a></li>';
+}else{
+  echo '
+    <li><a href="#">My Account</a>
+      <ul class="dropdown">
+        <li><a href="profile.php">Profile</a></li>
+        <li><a href="my-booking.php">My Booking</a></li>
+        <li><a href="change-password.php">Change Password</a></li>
+        <li><a href="logout.php">Logout</a></li>
+      </ul>
+    </li>';
+}
+?>
+
 </ul>
 
 <!-- <div class="search-btn ml-4">

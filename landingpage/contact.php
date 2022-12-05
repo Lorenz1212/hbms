@@ -1,12 +1,11 @@
 <?php 
  if(isset($_POST['submit']))
   {
-
-
- $name=$_POST['name'];
-    $phone=$_POST['phone'];
-    $email=$_POST['email'];
-    $message=$_POST['message'];
+include('../includes/dbconnection.php');
+$name=$_POST['name'];
+$phone=$_POST['phone'];
+$email=$_POST['email'];
+$message=$_POST['message'];
 
 $sql="insert into tblcontact(Name,MobileNumber,Email,Message)values(:name,:phone,:email,:message)";
 $query=$dbh->prepare($sql);
