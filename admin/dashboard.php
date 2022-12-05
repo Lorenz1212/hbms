@@ -20,15 +20,15 @@ if (strlen($_SESSION['hbmsaid']==0)) {
 <!-- Custom CSS -->
 <link href="css/style.css" rel='stylesheet' type='text/css' />
 <!-- Graph CSS -->
-<link href="css/font-awesome.css" rel="stylesheet"> 
+<link href="css/font-awesome.css" rel="stylesheet">
 <!-- jQuery -->
 <link href='//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'/>
 <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <!-- lined-icons -->
 <link rel="stylesheet" href="css/icon-font.min.css" type='text/css' />
-<script src="js/amcharts.js"></script>	
-<script src="js/serial.js"></script>	
-<script src="js/light.js"></script>	
+<script src="js/amcharts.js"></script>
+<script src="js/serial.js"></script>
+<script src="js/light.js"></script>
 <!-- //lined-icons -->
 <script src="js/jquery-1.10.2.min.js"></script>
    <!--pie-chart--->
@@ -66,11 +66,11 @@ if (strlen($_SESSION['hbmsaid']==0)) {
                 }
             });
 
-           
+
         });
 
     </script>
-</head> 
+</head>
 <body>
    <div class="page-container">
    <!--/content-inner-->
@@ -79,20 +79,20 @@ if (strlen($_SESSION['hbmsaid']==0)) {
 		<!-- header-starts -->
 			<?php include_once('includes/header.php');?>
 					<!-- //header-ends -->
-				
+
 				<!--content-->
 			<div class="content">
-					
-						
-				
+
+
+
 							<div class="col-md-12">
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <div class="content-top-1">
                                 <h4 class="text-left text-uppercase" style="color: orange"><a href="new-booking.php"><b>New Booking</b></a></h4>
-                                <div class="row vertical-center-box 
+                                <div class="row vertical-center-box
                                 vertical-center-box-tablet">
-                                <?php 
+                                <?php
                         $sql2 ="SELECT * from  tblbooking where Status is null ";
 $query2 = $dbh -> prepare($sql2);
 $query2->execute();
@@ -115,8 +115,8 @@ $totnewbooking=$query2->rowCount();
                             <div class="content-top-1">
                                 <h4 class="text-left text-uppercase" style="color: red"><a href="approved-booking.php"><b>Approved Booking</b></a></h4>
                                 <div class="row vertical-center-box vertical-center-box-tablet">
-                                	<?php 
-                        $sql2 ="SELECT * from  tblbooking where Status='Approved'";
+                                	<?php
+                        $sql2 ="SELECT * from  tblbooking where Status='Approved' AND check_out = 0";
 $query2 = $dbh -> prepare($sql2);
 $query2->execute();
 $results2=$query2->fetchAll(PDO::FETCH_OBJ);
@@ -138,7 +138,7 @@ $totappbooking=$query2->rowCount();
                             <div class="content-top-1">
                                 <h4 class="text-left text-uppercase" style="color: magenta"><a href="cancelled-booking.php"><b>Cancelled Booking</b></a></h4>
                                 <div class="row vertical-center-box vertical-center-box-tablet">
-                                	<?php 
+                                	<?php
                         $sql2 ="SELECT * from  tblbooking where Status='Cancelled'";
 $query2 = $dbh -> prepare($sql2);
 $query2->execute();
@@ -157,7 +157,7 @@ $totcanbooking=$query2->rowCount();
                                 </div>
                             </div>
                         </div>
-                      
+
                     </div>
                 </div>
 						<div class="col-md-12" style="padding-top: 20px">
@@ -166,7 +166,7 @@ $totcanbooking=$query2->rowCount();
                             <div class="content-top-1">
                                 <h4 class="text-left text-uppercase" style="color: orange"><a href="reg-users.php"><b>Reg Users</b></a></h4>
                                 <div class="row vertical-center-box vertical-center-box-tablet">
-                                	<?php 
+                                	<?php
 						$sql1 ="SELECT * from  tbluser";
 $query1 = $dbh -> prepare($sql1);
 $query1->execute();
@@ -189,7 +189,7 @@ $totregusers=$query1->rowCount();
                             <div class="content-top-1">
                                 <h4 class="text-left text-uppercase" style="color: red"><a href="read-enquiry.php"><b>Read Enquries</b></a></h4>
                                 <div class="row vertical-center-box vertical-center-box-tablet">
-                                	<?php 
+                                	<?php
 						$sql1 ="SELECT * from  tblcontact where Isread='1'";
 $query1 = $dbh -> prepare($sql1);
 $query1->execute();
@@ -212,7 +212,7 @@ $totreadqueries=$query1->rowCount();
                             <div class="content-top-1">
                                 <h4 class="text-left text-uppercase" style="color: magenta"><a href="unread-enquiry.php"><b>Unread Enquries</b></a></h4>
                                 <div class="row vertical-center-box vertical-center-box-tablet">
-                                	<?php 
+                                	<?php
 						$sql1 ="SELECT * from  tblcontact where Isread is null";
 $query1 = $dbh -> prepare($sql1);
 $query1->execute();
@@ -231,30 +231,30 @@ $totunreadqueries=$query1->rowCount();
                                 </div>
                             </div>
                         </div>
-                       
+
                     </div>
                 </div>
 						<div class="clearfix"></div>
 
-						
+
 					<div class="content-top">
-								
-		
+
+
 		<?php include_once('includes/footer.php');?>
 			</div>
 			<!--content-->
 		</div>
-		
+
 </div>
 				<!--//content-inner-->
-			
+
 			<?php include_once('includes/sidebar.php');?>
-							  <div class="clearfix"></div>		
+							  <div class="clearfix"></div>
 							</div>
 							<script>
 							var toggle = true;
-										
-							$(".sidebar-icon").click(function() {                
+
+							$(".sidebar-icon").click(function() {
 							  if (toggle)
 							  {
 								$(".page-container").addClass("sidebar-collapsed").removeClass("sidebar-collapsed-back");
@@ -267,7 +267,7 @@ $totunreadqueries=$query1->rowCount();
 								  $("#menu span").css({"position":"relative"});
 								}, 400);
 							  }
-											
+
 											toggle = !toggle;
 										});
 							</script>
@@ -382,7 +382,7 @@ $totunreadqueries=$query1->rowCount();
 					values: [{
 						from: "/Date(1320192000000)/",
 						to: "/Date(1322401600000)/",
-						label: "Requirement Gathering", 
+						label: "Requirement Gathering",
 						customClass: "ganttRed"
 					}]
 				},{
@@ -391,7 +391,7 @@ $totunreadqueries=$query1->rowCount();
 					values: [{
 						from: "/Date(1322611200000)/",
 						to: "/Date(1323302400000)/",
-						label: "Scoping", 
+						label: "Scoping",
 						customClass: "ganttRed"
 					}]
 				},{
@@ -400,7 +400,7 @@ $totunreadqueries=$query1->rowCount();
 					values: [{
 						from: "/Date(1323802400000)/",
 						to: "/Date(1325685200000)/",
-						label: "Development", 
+						label: "Development",
 						customClass: "ganttGreen"
 					}]
 				},{
@@ -409,7 +409,7 @@ $totunreadqueries=$query1->rowCount();
 					values: [{
 						from: "/Date(1325685200000)/",
 						to: "/Date(1325695200000)/",
-						label: "Showcasing", 
+						label: "Showcasing",
 						customClass: "ganttBlue"
 					}]
 				},{
@@ -418,7 +418,7 @@ $totunreadqueries=$query1->rowCount();
 					values: [{
 						from: "/Date(1326785200000)/",
 						to: "/Date(1325785200000)/",
-						label: "Development", 
+						label: "Development",
 						customClass: "ganttGreen"
 					}]
 				},{
@@ -427,7 +427,7 @@ $totunreadqueries=$query1->rowCount();
 					values: [{
 						from: "/Date(1328785200000)/",
 						to: "/Date(1328905200000)/",
-						label: "Showcasing", 
+						label: "Showcasing",
 						customClass: "ganttBlue"
 					}]
 				},{
@@ -436,7 +436,7 @@ $totunreadqueries=$query1->rowCount();
 					values: [{
 						from: "/Date(1330011200000)/",
 						to: "/Date(1336611200000)/",
-						label: "Training", 
+						label: "Training",
 						customClass: "ganttOrange"
 					}]
 				},{
@@ -445,7 +445,7 @@ $totunreadqueries=$query1->rowCount();
 					values: [{
 						from: "/Date(1336611200000)/",
 						to: "/Date(1338711200000)/",
-						label: "Deployment", 
+						label: "Deployment",
 						customClass: "ganttOrange"
 					}]
 				},{
@@ -454,7 +454,7 @@ $totunreadqueries=$query1->rowCount();
 					values: [{
 						from: "/Date(1336611200000)/",
 						to: "/Date(1349711200000)/",
-						label: "Warranty Period", 
+						label: "Warranty Period",
 						customClass: "ganttOrange"
 					}]
 				}],

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2022 at 11:01 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- Generation Time: Dec 05, 2022 at 05:40 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -85,19 +85,18 @@ CREATE TABLE `tblbooking` (
   `BookingDate` timestamp NULL DEFAULT current_timestamp(),
   `Remark` varchar(50) DEFAULT NULL,
   `Status` varchar(50) DEFAULT NULL,
-  `UpdationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
+  `UpdationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
+  `check_out` tinyint(1) NOT NULL,
+  `check_out_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tblbooking`
 --
 
-INSERT INTO `tblbooking` (`ID`, `RoomId`, `BookingNumber`, `UserID`, `IDType`, `Gender`, `Address`, `CheckinDate`, `CheckoutDate`, `BookingDate`, `Remark`, `Status`, `UpdationDate`) VALUES
-(1, 2, '803934050', 1, 'Adhar Card', 'Male', 'New Delhi India', '2020-04-29', '2020-05-01', '2020-04-27 14:20:53', 'Cancelled', 'Cancelled', '2020-04-27 15:01:41'),
-(2, 1, '132018073', 3, 'Voter Card', 'Male', 'B3253 New Delhi India', '2020-05-15', '2020-05-20', '2020-04-27 14:54:49', 'Booking Confirmed.', 'Approved', '2020-04-27 15:00:46'),
-(3, 8, '891347543', 4, 'Voter Card', 'Male', '333 Fremont Street', '2022-12-02', '2022-12-03', '2022-12-02 13:55:58', 'xxx', 'Approved', '2022-12-02 15:05:17'),
-(4, 6, '862064547', 4, 'Passport', 'Male', '333 Fremont Street', '2022-12-04', '2022-12-06', '2022-12-02 15:04:17', NULL, NULL, NULL),
-(5, 1, '531718715', 4, 'Adhar Card', 'Female', 'xxx', '2022-12-12', '2022-12-13', '2022-12-04 09:59:54', 'xxx', 'Approved', '2022-12-04 10:00:10');
+INSERT INTO `tblbooking` (`ID`, `RoomId`, `BookingNumber`, `UserID`, `IDType`, `Gender`, `Address`, `CheckinDate`, `CheckoutDate`, `BookingDate`, `Remark`, `Status`, `UpdationDate`, `check_out`, `check_out_date`) VALUES
+(1, 1, '785243751', 1, 'Voter Card', 'Female', '2qeqweqe', '2022-12-05', '2022-12-07', '2022-12-04 16:13:40', '1231231', 'Approved', '2022-12-04 17:46:30', 1, '2022-12-10'),
+(2, 6, '258869166', 1, 'Voter Card', 'Female', 'asdsa', '2022-12-06', '2022-12-07', '2022-12-04 16:30:18', 'adasdas', 'Approved', '2022-12-04 17:45:57', 0, '2022-12-10');
 
 -- --------------------------------------------------------
 
@@ -369,7 +368,7 @@ ALTER TABLE `tbladmin`
 -- AUTO_INCREMENT for table `tblbooking`
 --
 ALTER TABLE `tblbooking`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tblcategory`

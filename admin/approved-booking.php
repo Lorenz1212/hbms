@@ -135,13 +135,13 @@ if (strlen($_SESSION['hbmsaid'] == 0)) {
 														$total_rows = $query1->rowCount();
 														$total_pages = ceil($total_rows / $no_of_records_per_page);
 
-														
-														$sql = "SELECT tbluser.*,tblbooking.BookingNumber,tblbooking.Status,tblbooking.BookingDate, tblroom.RoomName,tblroom.hotel_type, tblhotel.hotel_name,tblcategory.CategoryName from tblbooking 
-														join tbluser on tblbooking.UserID=tbluser.ID 
+
+														$sql = "SELECT tbluser.*,tblbooking.BookingNumber,tblbooking.Status,tblbooking.BookingDate, tblroom.RoomName,tblroom.hotel_type, tblhotel.hotel_name,tblcategory.CategoryName from tblbooking
+														join tbluser on tblbooking.UserID=tbluser.ID
 														join tblroom on tblbooking.RoomId=tblroom.ID
 														join tblhotel on tblroom.hotel_type=tblhotel.hotel_id
-														join tblcategory on tblroom.RoomType=tblcategory.ID	
-														where tblbooking.Status='Approved' LIMIT $offset, $no_of_records_per_page";
+														join tblcategory on tblroom.RoomType=tblcategory.ID
+														where tblbooking.Status='Approved' and tblbooking.check_out != 1 LIMIT $offset, $no_of_records_per_page";
 														$query = $dbh->prepare($sql);
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -160,7 +160,9 @@ if (strlen($_SESSION['hbmsaid'] == 0)) {
 																	<td class="font-w600"><?php echo htmlentities($row->CategoryName); ?></td>
 																	<td class="font-w600"><?php echo htmlentities($row->BookingDate); ?></td>
 																	<td class="font-w600"><?php echo htmlentities($row->Status); ?></span>
-																	<td class="d-none d-sm-table-cell"><a href="view-booking-detail.php?bookingid=<?php echo htmlentities($row->BookingNumber); ?>"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+																	<td class="d-none d-sm-table-cell"><a href="view-booking-detail.php?bookingid=<?php echo htmlentities($row->BookingNumber); if ($row->Status == "Approved") {
+																		echo "&approve=1";
+																	}?>"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
 																</tr>
 															<?php $cnt = $cnt + 1;
 															}

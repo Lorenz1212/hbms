@@ -11,6 +11,7 @@ include('includes/dbconnection.php');
   <title>UNIVERSITY INN HOTEL | Hotel :: Facilities</title>
   <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
   <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <?php // include "admin/css/bootstrap.php"; ?>
   <script type="application/x-javascript">
     addEventListener("load", function() {
       setTimeout(hideURLbar, 0);
@@ -65,7 +66,7 @@ include('includes/dbconnection.php');
               <ul class="nav navbar-nav">
 
                 <li class=""><a href="index.php">Facilities <span class="sr-only">(current)</span></a></li>
-                <!--  
+                <!--
                                     <li><a href="services.php">Facilities</a></li> -->
                 <li class="nav-item dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Campus <span class="caret"></span></a>

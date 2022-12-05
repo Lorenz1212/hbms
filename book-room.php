@@ -23,7 +23,7 @@ if (strlen($_SESSION['hbmsuid'] == 0)) {
 		} else if ($checkindate > $checkoutdate) {
 			echo '<script>alert("Booking Date Invalid, Make Sure Dates are Right")</script>';
 		} else {
-			$sql = "insert into tblbooking(RoomId,BookingNumber,UserID,IDType,Gender,Address,CheckinDate,CheckoutDate)values(:rid,:booknum,:uid,:idtype,:gender,:address,:checkindate,:checkoutdate)";
+			$sql = "insert into tblbooking(RoomId,BookingNumber,UserID,IDType,Gender,Address,CheckinDate,CheckoutDate,check_out,check_out_date)values(:rid,:booknum,:uid,:idtype,:gender,:address,:checkindate,:checkoutdate,0,'')";
 			$query = $dbh->prepare($sql);
 			$query->bindParam(':rid', $rid, PDO::PARAM_STR);
 			$query->bindParam(':booknum', $booknum, PDO::PARAM_STR);

@@ -42,7 +42,7 @@ if (strlen($_SESSION['hbmsaid'] == 0)) {
 			}
 		</script>
 		<!-- Bootstrap Core CSS -->
-		<link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+
 		<!-- Custom CSS -->
 		<link href="css/style.css" rel='stylesheet' type='text/css' />
 		<!-- Graph CSS -->
@@ -50,6 +50,12 @@ if (strlen($_SESSION['hbmsaid'] == 0)) {
 		<!-- jQuery -->
 		<link href='//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css' />
 		<link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+		<?php if (isset($_GET['approve'])) {
+				include "css/bootstrap.php";
+		}else{
+			echo "<link href='css/bootstrap.min.css' rel='stylesheet' type='text/css' />";
+		} ?>
 		<!-- lined-icons -->
 		<link rel="stylesheet" href="css/icon-font.min.css" type='text/css' />
 		<script src="js/simpleCart.min.js"> </script>
@@ -98,6 +104,7 @@ if (strlen($_SESSION['hbmsaid'] == 0)) {
 	</head>
 
 	<body>
+
 		<div class="page-container">
 			<!--/content-inner-->
 			<div class="left-content">
@@ -124,11 +131,11 @@ if (strlen($_SESSION['hbmsaid'] == 0)) {
 
 												$bookid = $_GET['bookingid'];
 
-												$sql = "SELECT tblbooking.BookingNumber,tbluser.FullName,tbluser.MobileNumber,tbluser.Email,tblbooking.IDType,tblbooking.Gender,tblbooking.Address,tblbooking.CheckinDate,tblbooking.CheckoutDate,tblbooking.BookingDate,tblbooking.Remark,tblbooking.Status,tblbooking.UpdationDate,tblcategory.CategoryName,tblcategory.Description,tblcategory.Price,tblroom.RoomName,tblroom.MaxAdult,tblroom.MaxChild,tblroom.RoomDesc,tblroom.NoofBed,tblroom.Image,tblroom.RoomFacility,tblhotel.hotel_name 
-from tblbooking 
-join tblroom on tblbooking.RoomId=tblroom.ID 
-join tblcategory on tblcategory.ID=tblroom.RoomType 
-join tbluser on tblbooking.UserID=tbluser.ID  
+												$sql = "SELECT tblbooking.BookingNumber,tblbooking.check_out,tbluser.FullName,tbluser.MobileNumber,tbluser.Email,tblbooking.IDType,tblbooking.Gender,tblbooking.Address,tblbooking.CheckinDate,tblbooking.CheckoutDate,tblbooking.BookingDate,tblbooking.Remark,tblbooking.Status,tblbooking.UpdationDate,tblcategory.CategoryName,tblcategory.Description,tblcategory.Price,tblroom.RoomName,tblroom.MaxAdult,tblroom.MaxChild,tblroom.RoomDesc,tblroom.NoofBed,tblroom.Image,tblroom.RoomFacility,tblhotel.hotel_name
+from tblbooking
+join tblroom on tblbooking.RoomId=tblroom.ID
+join tblcategory on tblcategory.ID=tblroom.RoomType
+join tbluser on tblbooking.UserID=tbluser.ID
 join tblhotel on tblhotel.hotel_id=tblroom.hotel_type
 where tblbooking.BookingNumber=:bookid";
 												$query = $dbh->prepare($sql);
@@ -239,7 +246,9 @@ where tblbooking.BookingNumber=:bookid";
 
 																	<td><?php echo "Not Updated Yet"; ?></td>
 																<?php } else { ?> <td><?php echo htmlentities($row->Status); ?>
-																	</td>
+																	<?php if ($row->check_out == 1) {
+																		echo '<span style="color: red;">(Check Out)</span>';
+																	} ?></td>
 																<?php } ?>
 															</tr>
 
@@ -308,7 +317,9 @@ where tblbooking.BookingNumber=:bookid";
 											</div>
 
 											<!-- end content -->
-
+											<?php if (isset($_GET['approve'])) {
+												include 'check_out/checkout.php';
+											}?>
 											<?php include_once('includes/footer.php'); ?>
 										</div>
 
@@ -554,10 +565,12 @@ where tblbooking.BookingNumber=:bookid";
 								prettyPrint();
 
 							});
+
 						</script>
 						<script src="js/menu_jquery.js"></script>
 
 						<script src="js/pages/be_tables_datatables.js"></script>
+
 	</body>
 
 	</html><?php }  ?>

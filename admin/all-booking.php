@@ -32,6 +32,7 @@ if (strlen($_SESSION['hbmsaid'] == 0)) {
 			}
 		</script>
 		<!-- Bootstrap Core CSS -->
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 		<link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
 		<!-- Custom CSS -->
 		<link href="css/style.css" rel='stylesheet' type='text/css' />
@@ -88,6 +89,16 @@ if (strlen($_SESSION['hbmsaid'] == 0)) {
 	</head>
 
 	<body>
+		<?php if (isset($_GET['checkout'])){
+			// echo "<script>alert('done')</script>";
+			echo "<script>Swal.fire({
+			  icon: 'success',
+			  title: 'Check Out Done!',
+			  showConfirmButton: true,
+				confirmButtonText: 'Confirm'
+			})</script>";
+				} ?>
+
 		<div class="page-container">
 			<!--/content-inner-->
 			<div class="left-content">
@@ -124,7 +135,7 @@ if (strlen($_SESSION['hbmsaid'] == 0)) {
 															<th class="d-none d-sm-table-cell">Room Type</th>
 															<th class="d-none d-sm-table-cell">Booking Date</th>
 															<th class="d-none d-sm-table-cell">Status</th>
-															<th class="d-none d-sm-table-cell" style="width: 15%;">Action</th>
+																<th class="d-none d-sm-table-cell" style="width: 15%;">Action</th>
 														</tr>
 													</thead>
 													<tbody>
@@ -145,11 +156,11 @@ if (strlen($_SESSION['hbmsaid'] == 0)) {
 														$total_pages = ceil($total_rows / $no_of_records_per_page);
 
 														// $sql = "SELECT tbluser.*,tblbooking.BookingNumber,tblbooking.ID,tblbooking.Status,tblbooking.BookingDate from tblbooking join tbluser on tblbooking.UserID=tbluser.ID  LIMIT $offset, $no_of_records_per_page";
-														$sql = "SELECT tbluser.*,tblbooking.BookingNumber,tblbooking.Status,tblbooking.BookingDate, tblroom.RoomName,tblroom.hotel_type, tblhotel.hotel_name,tblcategory.CategoryName from tblbooking 
-														join tbluser on tblbooking.UserID=tbluser.ID 
+														$sql = "SELECT tbluser.*,tblbooking.BookingNumber,tblbooking.Status,tblbooking.check_out,tblbooking.BookingDate, tblroom.RoomName,tblroom.hotel_type, tblhotel.hotel_name,tblcategory.CategoryName from tblbooking
+														join tbluser on tblbooking.UserID=tbluser.ID
 														join tblroom on tblbooking.RoomId=tblroom.ID
 														join tblhotel on tblroom.hotel_type=tblhotel.hotel_id
-														join tblcategory on tblroom.RoomType=tblcategory.ID	
+														join tblcategory on tblroom.RoomType=tblcategory.ID
 														LIMIT $offset, $no_of_records_per_page";
 														$query = $dbh->prepare($sql);
 														$query->execute();
@@ -172,12 +183,16 @@ if (strlen($_SESSION['hbmsaid'] == 0)) {
 
 																		<td class="font-w600"><?php echo "Not Updated Yet"; ?></td>
 																	<?php } else { ?>
-																		<td class="font-w600"><?php echo htmlentities($row->Status); ?></span>
+																		<td class="font-w600"><?php echo htmlentities($row->Status); if ($row->check_out == 1) {
+																			echo "<p style='color: red;'> (Check Out)</p>";
+																		} ?></span>
 																		</td>
 																	<?php } ?>
-																	<td class="text-center"><a href="view-booking-detail.php?bookingid=<?php echo htmlentities($row->BookingNumber); ?>"><i class="fa fa-eye" aria-hidden="true"></i></a>
+																	<td class="text-center"><a href="view-booking-detail.php?bookingid=<?php echo htmlentities($row->BookingNumber); if ($row->Status == "Approved" && $row->check_out == "0") {
+																		echo "&approve=1";
+																	} ?>"><i class="fa fa-eye" aria-hidden="true"></i></a>
 																	<a href="all-booking.php?delid=<?php echo ($row->ID); ?>" onclick="return confirm('Do you really want to Delete ?');"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
-															
+
 																</tr>
 
 															<?php $cnt = $cnt + 1;
