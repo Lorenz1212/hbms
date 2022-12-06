@@ -55,7 +55,7 @@
       <ul class="main-menu">
          <li class="has-submenu"><a href="">Select Campus</a>
           <ul class="sub-menu">
-            <li><a  onclick="window.location.href='signin.php';" href="signin.php">Sta.Cruz Campus</a></li>
+            <li><a  onclick="window.location.href='landingpage/signin.php';" href="landingpage/signin.php">Sta.Cruz Campus</a></li>
             <li><a  onclick="window.location.href='San Pablo/index.html';" href="home.html">San Pablo Campus</a></li>
             <li><a  onclick="window.location.href='Los Banos/index.html';" href="home.html">Los Baños Campus</a></li>
           </ul>
