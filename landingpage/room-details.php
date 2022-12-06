@@ -287,7 +287,7 @@ where tblroom.id=:rmid";
 <h6>Max Child: <span><?php echo htmlentities($row->MaxChild); ?></span></h6>
 <h6>No of Beds: <span><?php echo htmlentities($row->NoofBed); ?></span></h6>
 </div>
-<a href="../book-room.php?rmid=<?php echo $row->rmid; ?>"  class="btn roberto-btn w-100">Book Now</a>
+<a href="book-room.php?rmid=<?php echo $row->rmid; ?>"  class="btn roberto-btn w-100">Book Now</a>
 <hr>
 	<h4 class="text-center">Rate the room:</h4>
 		<h4 class="text-center mt-2 mb-4">
